@@ -1,52 +1,37 @@
-def selection_sort(arr):
-    n=len(arr)
-    for i in range(n):
-        min_index=i
-        for j in range (i+1,n):
-            if arr[j]<arr[min_index]:
-                min_index=j
-        arr[i],arr[min_index]=arr[min_index],arr[i]
-       
-       
-def bubble_sort(arr):
-    n=len(arr)
-    for i in range(n):
-        swapped=False
-        for j in range(0,n-i-1):
-            if arr[j]>arr[j+1]:
-                arr[j],arr[j+1]=arr[j+1],arr[j]
-                swapped=True
-        if not swapped:
-            break
-       
-       
-def display_top_scores(arr,top_n):
-    if top_n>len(arr):
-        top_n=len(arr)
-    print(f"Top{top_n}Scores:")
-    for i in range(top_n):
-        print(f"{i+1}.{arr[i]}%")
-       
-       
-def main():
-    n=int(input("Enter the number of students:"))
-    percentages=[]
-    for i in range(n):
-        percentage=float(input(f"Enter the percentage for student {i+1}:"))
-        percentages.append(percentage)
-       
-       
-    selection_sorted=percentages.copy()
-    selection_sort(selection_sorted)
-    print("\nSorted array using Selection Sort:")
-    display_top_scores(selection_sorted,5)
+def deposit(num):
+    """Function to handle deposit."""
+    global balance
+    balance += num
+
+def withdrawal(num):
+    """Function to handle withdrawal."""
+    global balance
+    if balance >= num:
+        balance -= num
+    else:
+        print("Withdrawal not possible. Insufficient balance.")
+
+# Initialize balance to 0
+balance = 0
+
+while True:
+    # Take input for transactions
+    data = input("Please enter the transaction details (or 'Exit' to quit): ")
+
+    # Exit condition
+    if data.lower() == 'exit':
+        break
+
+    # Split the input into parts
+    transaction = data.split()
+
+    # Check if the transaction is deposit (D) or withdrawal (W)
+    if transaction[0] == 'D':
+        deposit(int(transaction[1]))  # Deposit amount
+    elif transaction[0] == 'W':
+        withdrawal(int(transaction[1]))  # Withdrawal amount
+    else:
+        print("Invalid transaction type. Please use 'D' for deposit or 'W' for withdrawal.")
    
-   
-    bubble_sorted=percentages.copy()
-    bubble_sort(bubble_sorted)
-    print("\nSorted array using Bubble Sort:")
-    display_top_scores(bubble_sorted,5)
-   
-   
-if __name__ == "__main__":
-    main()
+    # Print the current balance after each transaction
+    print(f"Current Balance: {balance}")
