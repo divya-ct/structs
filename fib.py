@@ -43,7 +43,6 @@ def main():
     phonebook = []  # List of tuples (name, number)
 
     while True:
-        print("Made by Soham Patil, 61 , SE-B AI&DS")
         print("Phonebook Options:")
         print("1. Search for a friend (Fibonacci search)")
         print("2. Insert a friend")
