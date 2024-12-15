@@ -37,7 +37,6 @@ def main():
     phonebook = []  # List of tuples (name, number)
 
     while True:
-        print("Made by Soham Patil, 61 , SE-B AI&DS")
         print("Phonebook Options:")
         print("1. Search for a friend (binary search - recursive)")
         print("2. Search for a friend (binary search - non-recursive)")
